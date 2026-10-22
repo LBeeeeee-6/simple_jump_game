@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://dmqnhighq7trm"]
+
+[ext_resource type="Script" uid="uid://ceohhps31mq40" path="res://main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://xdtf6ugsm1a1" path="res://TileMapTOTsource/tile_map.tscn" id="2_tile_map"]
+[ext_resource type="PackedScene" path="res://death_boundary.tscn" id="3_death_boundary"]
+
+[node name="Main" type="Node2D" unique_id=472728729]
+process_mode = 3
+process_priority = 1
+script = ExtResource("1_main")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=928846548]
+process_mode = 3
+
+[node name="DeathBoundary" parent="." unique_id=1018900527 instance=ExtResource("3_death_boundary")]
+
+[node name="MapChunks" type="Node2D" parent="." unique_id=109115532]
+
+[node name="TileMapChunk" parent="MapChunks" unique_id=21103350 instance=ExtResource("2_tile_map")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=172434366]
+layer = 10
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=1000565054]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 0.9, 0.25, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "分数：0"
+
+[node name="EffectStatus" type="VBoxContainer" parent="HUD" unique_id=1653328195]
+process_mode = 3
+visible = false
+offset_left = 490.0
+offset_top = 18.0
+offset_right = 790.0
+offset_bottom = 78.0
+theme_override_constants/separation = 4
+
+[node name="EffectLabel" type="Label" parent="HUD/EffectStatus" unique_id=257465866]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+text = "效果"
+horizontal_alignment = 1
+
+[node name="EffectTimer" type="ProgressBar" parent="HUD/EffectStatus" unique_id=118112998]
+custom_minimum_size = Vector2(300, 16)
+layout_mode = 2
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="DeathOverlay" type="Control" parent="HUD" unique_id=526725506]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Shade" type="ColorRect" parent="HUD/DeathOverlay" unique_id=954434181]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="TitleLabel" type="Label" parent="HUD/DeathOverlay" unique_id=1702754737]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 260.0
+offset_right = 780.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 32
+text = "你已死亡"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="HUD/DeathOverlay" unique_id=671195431]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 320.0
+offset_right = 780.0
+offset_bottom = 360.0
+theme_override_font_sizes/font_size = 24
+text = "最终分数：0"
+horizontal_alignment = 1
+
+[node name="RestartLabel" type="Label" parent="HUD/DeathOverlay" unique_id=1555547345]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 390.0
+offset_right = 860.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 18
+text = "按任意按键重新开始"
+horizontal_alignment = 1
+
+[node name="PauseOverlay" type="Control" parent="HUD" unique_id=1555547346]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shade" type="ColorRect" parent="HUD/PauseOverlay" unique_id=1053316206]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.62)
+
+[node name="Panel" type="PanelContainer" parent="HUD/PauseOverlay" unique_id=805776276]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 190.0
+offset_right = 825.0
+offset_bottom = 550.0
+
+[node name="Content" type="VBoxContainer" parent="HUD/PauseOverlay/Panel" unique_id=424048702]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="TitleLabel" type="Label" parent="HUD/PauseOverlay/Panel/Content" unique_id=1210531141]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.5, 1)
+theme_override_font_sizes/font_size = 34
+text = "暂停游戏"
+horizontal_alignment = 1
+
+[node name="ReturnMenuButton" type="Button" parent="HUD/PauseOverlay/Panel/Content" unique_id=1688454124]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "返回主界面"
+
+[node name="ResumeButton" type="Button" parent="HUD/PauseOverlay/Panel/Content" unique_id=1864016724]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+focus_neighbor_top = NodePath("../ReturnMenuButton")
+theme_override_font_sizes/font_size = 21
+text = "继续游戏"
+
+[node name="QuitButton" type="Button" parent="HUD/PauseOverlay/Panel/Content" unique_id=1026909914]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+focus_neighbor_top = NodePath("../ResumeButton")
+theme_override_font_sizes/font_size = 21
+text = "退出游戏"

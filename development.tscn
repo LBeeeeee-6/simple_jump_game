@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://vpx5ic5poosy"]
+
+[ext_resource type="Script" uid="uid://rc6ml642bqhd" path="res://player.gd" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://dng8igwrrendq" path="res://pictureResource/player/player_move.png" id="3_mg5e3"]
+[ext_resource type="PackedScene" uid="uid://b2sxilwiaefa6" path="res://double_jump_item.tscn" id="4_double_jump"]
+
+[sub_resource type="Animation" id="Animation_0wy3r"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_vwux4"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_acooy"]
+_data = {
+&"RESET": SubResource("Animation_0wy3r"),
+&"idle": SubResource("Animation_idle"),
+&"run": SubResource("Animation_vwux4")
+}
+
+[node name="Development" type="Node2D" unique_id=2121854114]
+position = Vector2(-1, 1)
+
+[node name="Background" type="ColorRect" parent="." unique_id=886091793]
+visible = false
+offset_right = 1278.0
+offset_bottom = 716.0
+mouse_filter = 2
+color = Color(0.74, 0.86, 0.94, 1)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1440141499 groups=["player"]]
+z_index = 100
+position = Vector2(141, 107)
+collision_layer = 2
+script = ExtResource("1_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1728624525]
+position = Vector2(-42, 41)
+scale = Vector2(0.020105822, 0.015333334)
+texture = ExtResource("3_mg5e3")
+hframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=512038709]
+position = Vector2(-15, 27)
+zoom = Vector2(4, 4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=663264625]
+libraries/ = SubResource("AnimationLibrary_acooy")
+autoplay = &"run"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player" unique_id=1682218892]
+position = Vector2(-39, 42)
+polygon = PackedVector2Array(-4, -8, 5, -8, 5, 6, -11, 6, -11, 5, -4, 5)
+
+[node name="DoubleJumpItem" parent="." unique_id=313458797 instance=ExtResource("4_double_jump")]
+position = Vector2(101, 147)
