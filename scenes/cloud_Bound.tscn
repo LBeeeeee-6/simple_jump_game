@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cfrlqdowla53o"]
+
+[ext_resource type="Texture2D" uid="uid://beh4l1837xyll" path="res://pictureResource/tai/云朵.png" id="1_fqwpy"]
+[ext_resource type="Script" uid="uid://coktu6vrl8uyl" path="res://scripts/cloud_bound.gd" id="2_cloud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to553"]
+size = Vector2(15, 14)
+
+[node name="cloudBound" type="Area2D" unique_id=581140319]
+collision_mask = 2
+script = ExtResource("2_cloud")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2024909154]
+position = Vector2(1, 4.0000005)
+scale = Vector2(0.13359788, 0.11725659)
+texture = ExtResource("1_fqwpy")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990934948]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_to553")

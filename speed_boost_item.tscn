@@ -1,19 +1,19 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://utjda8ybsgu0"]
 
-[ext_resource type="Texture2D" path="res://pictureResource/道具/奇怪效果.png" id="1_texture"]
+[ext_resource type="Texture2D" uid="uid://rd2ptdi5jspr" path="res://pictureResource/道具/奇怪效果.png" id="1_texture"]
 [ext_resource type="Script" path="res://speed_boost_item.gd" id="2_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_speed_boost"]
 size = Vector2(14, 14)
 
-[node name="SpeedBoostItem" type="Area2D"]
+[node name="SpeedBoostItem" type="Area2D" unique_id=1591901232]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=319332384]
 scale = Vector2(0.009, 0.009)
 texture = ExtResource("1_texture")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=343222126]
 shape = SubResource("RectangleShape2D_speed_boost")

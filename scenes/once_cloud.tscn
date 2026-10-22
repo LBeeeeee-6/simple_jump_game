@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dpkd8xsn84os7"]
+
+[ext_resource type="Texture2D" uid="uid://dapasjh3o8clh" path="res://pictureResource/tai/一次云朵.png" id="1_0y8ab"]
+[ext_resource type="Script" uid="uid://c6rtsillp58cf" path="res://scripts/once_cloud.gd" id="2_once_cloud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83gp6"]
+size = Vector2(39, 9.75)
+
+[node name="OnceCloud" type="Area2D" unique_id=1419905456]
+position = Vector2(1, 1)
+collision_mask = 2
+script = ExtResource("2_once_cloud")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1033821581]
+position = Vector2(-2.0000153, -2.9999924)
+scale = Vector2(0.17340067, 0.19964664)
+texture = ExtResource("1_0y8ab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1978006472]
+position = Vector2(-1, -8)
+shape = SubResource("RectangleShape2D_83gp6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1490548696]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=352425446]
+position = Vector2(-1, 1)
+one_way_collision = true
+one_way_collision_margin = 2.0
+shape = SubResource("RectangleShape2D_83gp6")

@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://rd2ptdi5jspr" path="res://pictureResource/道具/奇怪效果.png" id="1_texture"]
+[ext_resource type="Script" uid="uid://k1dsfdjn8r3h" path="res://scripts/strange_effect_item.gd" id="2_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_strange_effect"]
+size = Vector2(14, 14)
+
+[node name="StrangeEffectItem" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.009, 0.009)
+texture = ExtResource("1_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_strange_effect")

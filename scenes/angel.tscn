@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://da1jj0rneibap"]
+
+[ext_resource type="Texture2D" uid="uid://cb1yu33r1vso4" path="res://pictureResource/boss/angel.png" id="1_angel"]
+[ext_resource type="Script" uid="uid://rdfgip7tltdc" path="res://scripts/angel.gd" id="2_angel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health_background"]
+bg_color = Color(0.12, 0.12, 0.12, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health_fill"]
+bg_color = Color(0.9, 0.12, 0.16, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_angel_detector"]
+size = Vector2(292, 293)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_angel_hit_receiver"]
+size = Vector2(382, 310)
+
+[node name="Angel" type="CharacterBody2D" unique_id=934247049]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_angel")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=433454623]
+position = Vector2(-0.9999962, 2.9999924)
+scale = Vector2(0.42674804, 0.4792383)
+texture = ExtResource("1_angel")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1674702010]
+offset_left = -28.0
+offset_top = -53.0
+offset_right = 36.0
+offset_bottom = -45.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_health_background")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health_fill")
+show_percentage = false
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1678206611]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=251013639]
+position = Vector2(-34, -14.5)
+shape = SubResource("RectangleShape2D_angel_detector")
+
+[node name="HitReceiver" type="Area2D" parent="." unique_id=1982159021]
+position = Vector2(1, 7)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitReceiver" unique_id=251013640]
+position = Vector2(-20, -22)
+shape = SubResource("RectangleShape2D_angel_hit_receiver")

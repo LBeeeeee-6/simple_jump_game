@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cjgyfs10p171r"]
+
+[ext_resource type="PackedScene" uid="uid://vpx5ic5poosy" path="res://scenes/development.tscn" id="1_8uh7m"]
+[ext_resource type="PackedScene" path="res://scenes/tile_map.tscn" id="2_6uqi0"]
+
+[node name="test" type="Node2D" unique_id=405409700]
+
+[node name="Development" parent="." unique_id=2121854114 instance=ExtResource("1_8uh7m")]
+
+[node name="TileMapLayer" parent="." unique_id=1470193198 instance=ExtResource("2_6uqi0")]
